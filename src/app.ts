@@ -25,8 +25,9 @@ const store = new fromStore.Store({}, {
   }]
 });
 
-console.log(store.value);
-
+/**
+ * When the user clicks on "Add ToDo" dispatch the action to create a new todo
+ */
 button.addEventListener(
   'click',
   () => {
@@ -35,7 +36,11 @@ button.addEventListener(
 
     const payload = { label: input.value, complete: false };
 
-    console.log(payload);
+    // Dispatch the action to add a todo
+    store.dispatch({
+      type: 'ADD_TODO',
+      payload
+    });
 
     input.value = '';
   },
