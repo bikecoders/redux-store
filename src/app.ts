@@ -1,6 +1,7 @@
 import * as fromStore from './store';
 
 import { renderTodos } from './utils';
+import { reducer } from './store';
 
 /**
  * The input where the user writes the new todo
@@ -19,11 +20,15 @@ const destroy = document.querySelector('.unsubscribe') as HTMLButtonElement;
  */
 const todoList = document.querySelector('.todos') as HTMLLIElement;
 
-const store = new fromStore.Store({}, {
-  todos: [{
-    label: 'Eat Pizza', complete: false
-  }]
-});
+/**
+ * Declare your reducers
+ */
+const reducers = {
+  todos: fromStore.reducer
+};
+
+// Instantiate the store
+const store = new fromStore.Store(reducers);
 
 /**
  * When the user clicks on "Add ToDo" dispatch the action to create a new todo
@@ -34,13 +39,16 @@ button.addEventListener(
     // If it is only spaces, do nothing...
     if (!input.value.trim()) return;
 
+    // Create the payload
     const payload = { label: input.value, complete: false };
 
-    // Dispatch the action to add a todo
+    // Dispatch the action to add an item
     store.dispatch({
       type: 'ADD_TODO',
       payload
     });
+
+    console.log(store.value);
 
     input.value = '';
   },
