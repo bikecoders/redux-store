@@ -1,4 +1,4 @@
-import { actionModel } from "./actions";
+import * as Actions from "./actions";
 
 /**
  * Declaring the initial state.
@@ -20,18 +20,15 @@ export const initialState = {
  */
 export function reducer(
   state: any = initialState,
-  action: actionModel
+  action: Actions.actionModel
 ) {
   switch (action.type) {
     // The action to add an item to the todo list
-    case 'ADD_TODO': {
+    case Actions.ADD_TODO: {
       const todo = action.payload;
       const data = [...state.data, todo];
 
-      return {
-        ...state,
-        data
-      }
+      return { ...state, data };
     }
   }
 

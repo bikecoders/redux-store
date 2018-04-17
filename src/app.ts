@@ -43,12 +43,7 @@ button.addEventListener(
     const payload = { label: input.value, complete: false };
 
     // Dispatch the action to add an item
-    store.dispatch({
-      type: 'ADD_TODO',
-      payload
-    });
-
-    console.log(store.value);
+    store.dispatch(new fromStore.AddTodo(payload));
 
     input.value = '';
   },
