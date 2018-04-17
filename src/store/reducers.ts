@@ -1,3 +1,5 @@
+import { actionModel } from "./actions";
+
 /**
  * Declaring the initial state.
  * Define its default properties
@@ -34,12 +36,4 @@ export function reducer(
   }
 
   return state;
-}
-
-/**
- * The model of our actions
- */
-interface actionModel {
-  type: string;
-  payload: any;
 }

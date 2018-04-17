@@ -55,9 +55,28 @@ button.addEventListener(
   false
 );
 
+// The subscription returns a function that if be executed will unsubscribe
+const unsubscribeForDOMUpdates: Function =
+  // Subscribe to new state changes
+  store.subscribe(state => {
+    renderTodos(state.todos.data);
+  });
+
+// When the user clicks on unsubscribe, trigger unsubscribeForDOMUpdates
+destroy.addEventListener(
+  "click",
+  unsubscribeForDOMUpdates as EventListenerOrEventListenerObject,
+  false
+);
+
+// Executed when the user clicks the Delete button
 todoList.addEventListener('click', function(event) {
   const target = event.target as HTMLButtonElement;
+  // Only if the element clicked was a button
   if (target.nodeName.toLowerCase() === 'button') {
     console.log(target);
   }
 });
+
+// Subscribe to the
+store.subscribe(state => console.log('STATE:: ', state));
