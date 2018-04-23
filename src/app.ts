@@ -69,7 +69,10 @@ todoList.addEventListener('click', function(event) {
   const target = event.target as HTMLButtonElement;
   // Only if the element clicked was a button
   if (target.nodeName.toLowerCase() === 'button') {
-    console.log(target);
+    // Extract the data of the element to delete
+    const whatTodoIs = JSON.parse(target.getAttribute('data-todo') as string);
+    // Dispatch the action to delete a this TODO
+    store.dispatch(new fromStore.RemoveTodo(whatTodoIs));
   }
 });
 

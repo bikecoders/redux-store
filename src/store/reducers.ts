@@ -30,6 +30,16 @@ export function reducer(
 
       return { ...state, data };
     }
+
+    // Action for remove a todo
+    case Actions.REMOVE_TODO: {
+      // Remove the given todo
+      const data = state.data.filter(
+        todo => todo.label !== action.payload.label
+      );
+
+      return { ...state, data };
+    }
   }
 
   return state;

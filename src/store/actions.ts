@@ -11,6 +11,7 @@ export interface actionModel {
  * Just add a todo
  */
 export const ADD_TODO = '[Todo] Add Todo'
+export const REMOVE_TODO = '[Todo] Remove Todo'
 
 /**
  * An action creator
@@ -18,6 +19,16 @@ export const ADD_TODO = '[Todo] Add Todo'
  */
 export class AddTodo implements actionModel{
   readonly type = ADD_TODO;
+
+  constructor(public payload: any){};
+}
+
+/**
+ * An action creator
+ * for Remove a todo
+ */
+export class RemoveTodo implements actionModel{
+  readonly type = REMOVE_TODO;
 
   constructor(public payload: any){};
 }
